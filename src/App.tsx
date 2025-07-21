@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import EventList from "./components/EventList";
+import type { IEvent } from "./types/event.types";
+import EventForm from "./components/EventForm";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [events, setEvents] = useState<IEvent[]>([]);
+
+  const fetchEvents = async () => {
+    try {
+      const res = await axios.get<IEvent[]>("http://localhost:5000/events");
+      setEvents(res.data);
+    } catch (err) {
+      console.log(err);
+      alert("Failed to fetch events");
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main className="max-w-2xl mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4 text-center">
+        Mini Event Scheduler
+      </h1>
+      <EventForm onEventCreated={fetchEvents} />
+      <EventList events={events} onUpdate={fetchEvents} />
+    </main>
+  );
 }
 
-export default App
+export default App;
