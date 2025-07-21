@@ -9,7 +9,9 @@ function App() {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get<IEvent[]>("http://localhost:5000/events");
+      const res = await axios.get<IEvent[]>(
+        "import.meta.env.VITE_BASE_URL/events"
+      );
       setEvents(res.data);
     } catch (err) {
       console.log(err);

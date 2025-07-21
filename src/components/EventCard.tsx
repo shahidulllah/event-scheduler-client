@@ -1,5 +1,5 @@
-import axios from 'axios';
-import type { IEvent } from '../types/event.types';
+import axios from "axios";
+import type { IEvent } from "../types/event.types";
 
 interface Props {
   event: IEvent;
@@ -9,19 +9,19 @@ interface Props {
 export default function EventCard({ event, onUpdate }: Props) {
   const handleArchive = async () => {
     try {
-      await axios.put(`http://localhost:5000/events/${event.id}`);
+      await axios.put(`${import.meta.env.VITE_BASE_URL}/events/${event.id}`);
       onUpdate();
     } catch {
-      alert('Failed to archive event');
+      alert("Failed to archive event");
     }
   };
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/events/${event.id}`);
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}/events/${event.id}`);
       onUpdate();
     } catch {
-      alert('Failed to delete event');
+      alert("Failed to delete event");
     }
   };
 
@@ -31,11 +31,11 @@ export default function EventCard({ event, onUpdate }: Props) {
         <h3 className="text-lg font-semibold">{event.title}</h3>
         <span
           className={`text-sm px-2 py-1 rounded ${
-            event.category === 'Work'
-              ? 'bg-blue-100 text-blue-800'
-              : event.category === 'Personal'
-              ? 'bg-green-100 text-green-800'
-              : 'bg-gray-200 text-gray-800'
+            event.category === "Work"
+              ? "bg-blue-100 text-blue-800"
+              : event.category === "Personal"
+              ? "bg-green-100 text-green-800"
+              : "bg-gray-200 text-gray-800"
           }`}
         >
           {event.category}
@@ -54,11 +54,11 @@ export default function EventCard({ event, onUpdate }: Props) {
           disabled={event.archived}
           className={`px-3 py-1 rounded text-sm ${
             event.archived
-              ? 'bg-gray-300 cursor-not-allowed'
-              : 'bg-yellow-500 text-white hover:bg-yellow-600'
+              ? "bg-gray-300 cursor-not-allowed"
+              : "bg-yellow-500 text-white hover:bg-yellow-600"
           }`}
         >
-          {event.archived ? 'Archived' : 'Archive'}
+          {event.archived ? "Archived" : "Archive"}
         </button>
 
         <button

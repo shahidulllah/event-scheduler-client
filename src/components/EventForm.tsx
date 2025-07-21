@@ -19,7 +19,7 @@ export default function EventForm({ onEventCreated }: Props) {
     }
 
     try {
-      await axios.post("http://localhost:5000/events", {
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/events`, {
         title,
         date,
         time,
