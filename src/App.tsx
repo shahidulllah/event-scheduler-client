@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import EventList from "./components/EventList";
 import type { IEvent } from "./types/event.types";
 import EventForm from "./components/EventForm";
+import EventList from "./components/EventList";
 
 function App() {
   const [events, setEvents] = useState<IEvent[]>([]);

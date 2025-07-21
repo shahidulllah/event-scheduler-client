@@ -31,6 +31,7 @@ export default function EventForm({ onEventCreated }: Props) {
       setNotes("");
       onEventCreated();
     } catch (error) {
+      console.log(error);
       alert("Failed to create event");
     }
   };
