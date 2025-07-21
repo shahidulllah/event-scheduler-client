@@ -10,7 +10,7 @@ export default function EventForm({ onEventCreated }: Props) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [notes, setNotes] = useState("");
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title || !date || !time) {

@@ -10,7 +10,7 @@ function App() {
   const fetchEvents = async () => {
     try {
       const res = await axios.get<IEvent[]>(
-        "import.meta.env.VITE_BASE_URL/events"
+        `${import.meta.env.VITE_BASE_URL}/events`
       );
       setEvents(res.data);
     } catch (err) {
