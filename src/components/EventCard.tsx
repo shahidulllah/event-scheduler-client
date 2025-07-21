@@ -23,7 +23,7 @@ export default function EventCard({ event, onUpdate }: Props) {
   const handleDelete = async () => {
     try {
       await axios.delete(`${import.meta.env.VITE_BASE_URL}/events/${event.id}`);
-      toast.success("Event archived!");
+      toast.success("Event Deleted!");
       onUpdate();
     } catch {
      toast.error("Failed to delete event");
