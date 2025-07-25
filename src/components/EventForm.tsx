@@ -97,7 +97,7 @@ export default function EventForm({ onEventCreated }: Props) {
         type="submit"
         className="w-full bg-gradient-to-r from-indigo-600 to-pink-700 hover:from-indigo-900 hover:to-pink-600 text-white font-semibold py-2.5 rounded-lg transition-all duration-200 shadow-md"
       >
-         Add Event
+        Add Event
       </button>
     </form>
   );
