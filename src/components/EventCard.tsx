@@ -26,11 +26,11 @@ export default function EventCard({ event, onUpdate }: Props) {
       toast.success("Event Deleted!");
       onUpdate();
     } catch {
-     toast.error("Failed to delete event");
+      toast.error("Failed to delete event");
     }
   };
 
-  const formattedDate = format(parseISO(event.date), "PPP"); 
+  const formattedDate = format(parseISO(event.date), "PPP");
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-md p-5 space-y-3 hover:shadow-lg transition-all duration-300">
